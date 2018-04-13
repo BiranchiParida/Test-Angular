@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
   import{ ActivatedRoute,Router,Params} from '@angular/router'
+   import {HomeService} from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   Querystring:string="";
-  constructor(private router:ActivatedRoute,private routers:Router) { }
+  constructor(private router:ActivatedRoute,private routers:Router,private service:HomeService) { }
 
    
   ngOnInit() {
-    this.router.paramMap.subscribe((params)=>{
- let id=params.get('order')
- this.Querystring=id;
-   alert("hi"+ this.Querystring);
-    })
-    //this.Querystring=this.router.snapshot.params["order"]
+  
   }
-  GoNext()
+     
+  
+  GoNext(value,valu2)
     {
-      
-this.routers.navigate(['employee',"desc"])
+      this.service.GetData(value,valu2).
+      subscribe((data)=>
+      this.Querystring=data)
+    // this.routers.navigate(['employee',value])
+    }
+    GoGet()
+    {
+      alert(this.Querystring)
     }
 
 }

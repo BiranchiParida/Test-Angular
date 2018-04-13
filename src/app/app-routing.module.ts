@@ -7,12 +7,13 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
- const appRoute:Routes=[{ path:'home',component:HomeComponent}
- ,{path:'employee/:order',component:EmployeeComponent},
- {
-   path:'' ,redirectTo:'/home',pathMatch:'full'
- },
-{path:"**",component:PageNotFoundComponent}
+ const appRoute:Routes=
+ [
+ 
+  {path:'employee/:order',component:EmployeeComponent},
+  { path:'home',component:HomeComponent},
+  {path:'' ,redirectTo:'/home',pathMatch:'full'}
+
 ]
 @NgModule({
   imports: 

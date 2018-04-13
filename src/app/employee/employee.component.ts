@@ -11,10 +11,17 @@ value:string;
   constructor(private router:Router,private activate:ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.activate.snapshot.queryParams['order']);
+    
+    this.activate.paramMap.subscribe((params)=>{
+      console.log(params.get('order'))
+      //this.Querystring=id;
+     
+      })
+    console.log(this.activate.snapshot.params.order)
   }
   GoBack()
   {
-    this.router.navigate(['home'],{queryParams: { order: 'popular' }});
+    //this.router.navigate(['home'],{queryParams: { order: 'popular' }});
+    this.router.navigate(['home'],{queryParams:{order:'desc'}});
   }
 }
